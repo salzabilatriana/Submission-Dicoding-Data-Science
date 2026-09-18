@@ -5,7 +5,7 @@
 **Id Dicoding:** zalana9
 
 ## Business Understanding
-Jaya Jaya Institut adalah institusi pendidikan perguruan tinggi yang telah berdiri sejak tahun 2000 dan telah mencetak banyak lulusan dengan reputasi baik. Namun, institusi ini menghadapi masalah tingkat **dropout** (siswa tidak menyelesaikan pendidikan) yang cukup tinggi — sekitar **32% dari 4.424 siswa** pada data historis yang dianalisis. Angka dropout yang tinggi berdampak pada reputasi institusi, efisiensi biaya operasional pendidikan, dan tingkat kelulusan yang menjadi salah satu indikator kualitas institusi.
+Jaya Jaya Institut adalah institusi pendidikan perguruan tinggi yang telah berdiri sejak tahun 2000 dan telah mencetak banyak lulusan dengan reputasi baik. Namun, institusi ini menghadapi masalah tingkat **dropout** (siswa tidak menyelesaikan pendidikan) yang cukup tinggi, sekitar **32% dari 4.424 siswa** pada data historis yang dianalisis. Angka dropout yang tinggi berdampak pada reputasi institusi, efisiensi biaya operasional pendidikan, dan tingkat kelulusan yang menjadi salah satu indikator kualitas institusi.
 
 Agar dapat memberikan bimbingan khusus secara tepat waktu, Jaya Jaya Institut membutuhkan cara untuk **mendeteksi sedini mungkin** siswa yang berisiko dropout, berdasarkan data yang sudah mereka miliki sejak pendaftaran hingga performa akademik semester berjalan.
 
@@ -16,9 +16,9 @@ Agar dapat memberikan bimbingan khusus secara tepat waktu, Jaya Jaya Institut me
 
 ### Cakupan Proyek
 1. **Data Understanding & Exploratory Data Analysis (EDA)** terhadap data siswa (`data.csv`) mencakup 4.424 baris dan 37 atribut (data pendaftaran, latar belakang keluarga, kondisi finansial, performa akademik semester 1 & 2, serta indikator makroekonomi).
-2. **Data Preparation** — pemeriksaan kualitas data, encoding target, split data latih/uji, dan standarisasi fitur.
-3. **Modeling** — membangun model klasifikasi (Logistic Regression sebagai baseline dan Random Forest yang dituning) untuk memprediksi status siswa: `Dropout`, `Enrolled`, atau `Graduate`.
-4. **Evaluation** — mengukur performa model dan menganalisis fitur-fitur yang paling berpengaruh terhadap dropout.
+2. **Data Preparation**, pemeriksaan kualitas data, encoding target, split data latih/uji, dan standarisasi fitur.
+3. **Modeling**, membangun model klasifikasi (Logistic Regression sebagai baseline dan Random Forest yang dituning) untuk memprediksi status siswa: `Dropout`, `Enrolled`, atau `Graduate`.
+4. **Evaluation**, mengukur performa model dan menganalisis fitur-fitur yang paling berpengaruh terhadap dropout.
 5. **Prototype sistem machine learning** berbasis Streamlit yang dapat digunakan tim akademik untuk memprediksi status siswa secara individual maupun massal (batch via CSV).
 6. **Rekomendasi action items** bagi manajemen berdasarkan insight yang ditemukan.
 
@@ -69,14 +69,14 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 Aplikasi akan terbuka otomatis di browser pada `http://localhost:8501`. Terdapat dua mode:
-- **Input Manual** — mengisi data satu siswa lewat form, lalu mendapatkan prediksi status beserta probabilitas tiap kelas.
-- **Upload CSV (Batch)** — mengunggah file CSV berisi banyak siswa (format sama seperti `data.csv`, tanpa kolom `Status`) untuk memprediksi seluruhnya sekaligus dan mengunduh hasilnya.
+- **Input Manual**, mengisi data satu siswa lewat form, lalu mendapatkan prediksi status beserta probabilitas tiap kelas.
+- **Upload CSV (Batch)**, mengunggah file CSV berisi banyak siswa (format sama seperti `data.csv`, tanpa kolom `Status`) untuk memprediksi seluruhnya sekaligus dan mengunduh hasilnya.
 
 **Menjalankan di Streamlit Community Cloud:**
 1. Push seluruh isi folder submission ini (termasuk folder `model/`) ke sebuah repository GitHub.
 2. Buka [share.streamlit.io](https://share.streamlit.io), login dengan akun GitHub.
 3. Klik **New app**, pilih repository tersebut, branch `main`, dan file utama `app.py`.
-4. Klik **Deploy** — Streamlit Cloud akan otomatis meng-install dependency dari `requirements.txt`.
+4. Klik **Deploy**, Streamlit Cloud akan otomatis menginstall dependency dari `requirements.txt`.
 5. Setelah deploy selesai, tautan publik aplikasi dapat dibagikan (contoh format: `https://<nama-app>.streamlit.app`).
 
 ### 🔗 Streamlit
@@ -86,7 +86,7 @@ Aplikasi akan terbuka otomatis di browser pada `http://localhost:8501`. Terdapat
 Berdasarkan hasil analisis data dan pemodelan machine learning terhadap 4.424 data siswa Jaya Jaya Institut:
 
 - Sekitar **32% siswa berstatus Dropout**, **50% Graduate**, dan **18% masih Enrolled**. Angka dropout ini cukup signifikan dan menjadi perhatian utama institusi.
-- **Performa akademik semester 1 dan 2** (jumlah mata kuliah yang disetujui/lulus dan nilai rata-rata) merupakan faktor **paling prediktif** terhadap status dropout siswa — jauh lebih prediktif dibanding nilai admission grade saat pendaftaran.
+- **Performa akademik semester 1 dan 2** (jumlah mata kuliah yang disetujui/lulus dan nilai rata-rata) merupakan faktor **paling prediktif** terhadap status dropout siswa, jauh lebih prediktif dibanding nilai admission grade saat pendaftaran.
 - **Faktor finansial** juga berperan penting: siswa dengan status **debtor** (memiliki tunggakan) dan pembayaran SPP yang **tidak up to date** menunjukkan proporsi dropout yang jauh lebih tinggi, sedangkan penerima **scholarship** menunjukkan proporsi dropout yang jauh lebih rendah.
 - Model **Random Forest (tuned)** yang dikembangkan mencapai akurasi sekitar **75%** dan F1-score (macro) sekitar **0,71** pada data uji, dengan performa yang baik dalam mengenali kelas Dropout (precision 0,83; recall 0,69) dan Graduate (precision 0,83; recall 0,86). Model ini sudah cukup layak digunakan sebagai alat bantu deteksi dini, meskipun masih ada ruang untuk perbaikan pada pengenalan kelas Enrolled.
 - Model beserta seluruh dependency yang diperlukan telah disimpan pada folder `model/` dan diintegrasikan ke dalam prototype `app.py`, sehingga tim akademik dapat langsung menggunakannya untuk memprediksi status siswa baru.
