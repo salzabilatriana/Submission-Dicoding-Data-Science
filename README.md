@@ -1,5 +1,9 @@
 # Proyek Akhir: Menyelesaikan Permasalahan Perusahaan Edutech
 
+**Nama:** Salzabila Triana Said
+**Email:** strianasaid@gmail.com
+**Id Dicoding:** zalana9
+
 ## Business Understanding
 Jaya Jaya Institut adalah institusi pendidikan perguruan tinggi yang telah berdiri sejak tahun 2000 dan telah mencetak banyak lulusan dengan reputasi baik. Namun, institusi ini menghadapi masalah tingkat **dropout** (siswa tidak menyelesaikan pendidikan) yang cukup tinggi — sekitar **32% dari 4.424 siswa** pada data historis yang dianalisis. Angka dropout yang tinggi berdampak pada reputasi institusi, efisiensi biaya operasional pendidikan, dan tingkat kelulusan yang menjadi salah satu indikator kualitas institusi.
 
@@ -36,9 +40,25 @@ jupyter notebook notebook.ipynb
 ```
 
 ## Business Dashboard
-Dashboard bisnis belum dibuat dalam bentuk tools BI terpisah (mis. Looker Studio/Tableau/Metabase) pada submission ini. Seluruh visualisasi analisis bisnis — distribusi status siswa, perbandingan performa akademik antar status, proporsi dropout berdasarkan faktor finansial, korelasi antar fitur, dan feature importance — tersedia secara lengkap di dalam `notebook.ipynb` pada bagian **Data Understanding** dan **Evaluation**, beserta gambar hasil ekspor (`.png`) yang disertakan di folder proyek.
+Dashboard ini dibuat menggunakan **Google Looker Studio** untuk menganalisis performa dan status mahasiswa berdasarkan data akademik, demografi, serta faktor risiko yang berkaitan dengan dropout.
 
-Jika ingin dikembangkan lebih lanjut menjadi dashboard interaktif terpisah, data hasil olahan pada notebook (mis. tabel ringkasan per Course, per status finansial, dsb.) dapat diekspor ke CSV lalu dihubungkan ke tools seperti Looker Studio atau Tableau Public.
+Dashboard menyajikan beberapa indikator utama, seperti:
+1. Total mahasiswa
+2. Graduation Rate
+3. Dropout Rate
+4. Course Pass Rate
+5. Distribusi status mahasiswa (Graduate, Dropout, dan Enrolled)
+6. Status mahasiswa berdasarkan Financial Risk
+7. Dropout Rate berdasarkan Financial Risk
+8. Rata-rata nilai akademik Semester 1 dan Semester 2 berdasarkan status mahasiswa
+9. Dropout Rate berdasarkan kelompok usia
+10. Dropout Rate berdasarkan gender
+11. Top 10 program studi berdasarkan Dropout Rate
+
+Dashboard juga dilengkapi dengan beberapa filter interaktif, seperti **Status, Age Group, Gender, dan Financial Risk**, sehingga pengguna dapat melakukan eksplorasi data berdasarkan kategori tertentu.
+
+### 🔗 Dashboard
+[**View Interactive Dashboard — Looker Studio**](https://datastudio.google.com/s/gj4mVvoa6pc)
 
 ## Menjalankan Sistem Machine Learning
 Prototype sistem machine learning dibangun menggunakan **Streamlit** dan memanfaatkan model Random Forest (`model/rf_dropout_model.pkl`) beserta scaler (`model/scaler.pkl`) yang telah disimpan dari hasil notebook.
@@ -59,7 +79,8 @@ Aplikasi akan terbuka otomatis di browser pada `http://localhost:8501`. Terdapat
 4. Klik **Deploy** — Streamlit Cloud akan otomatis meng-install dependency dari `requirements.txt`.
 5. Setelah deploy selesai, tautan publik aplikasi dapat dibagikan (contoh format: `https://<nama-app>.streamlit.app`).
 
-> Prototype pada submission ini dijalankan dan diverifikasi secara lokal; tautan Streamlit Community Cloud perlu ditambahkan di sini setelah proses deploy dilakukan dari akun/repository Anda sendiri.
+### 🔗 Streamlit
+[**View Streamlit Cloud**](https://submission-dicoding-data-science-tsajgkzu33f5tqta9fikoi.streamlit.app)
 
 ## Conclusion
 Berdasarkan hasil analisis data dan pemodelan machine learning terhadap 4.424 data siswa Jaya Jaya Institut:
